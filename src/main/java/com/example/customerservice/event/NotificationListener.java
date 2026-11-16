@@ -6,10 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.event.TransactionPhase;
 import org.springframework.transaction.event.TransactionalEventListener;
 
-/**
- * Transaction uğurla COMMIT olandan sonra, ayrıca thread-də işləyir.
- * Real layihədə burada Kafka / RabbitMQ-ya mesaj göndərilər və ya email göndərilər.
- */
+
 @Slf4j
 @Component
 public class NotificationListener {

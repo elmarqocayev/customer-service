@@ -35,7 +35,6 @@ public class Customer {
     @Column(nullable = false, updatable = false)
     private Instant createdAt;
 
-    // One-to-Many: bir müştərinin bir neçə ünvanı ola bilər
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Address> addresses = new ArrayList<>();
 

@@ -40,12 +40,10 @@ public class ServiceRequest {
     @Column(nullable = false)
     private Instant updatedAt;
 
-    // Many-to-One: çox müraciət -> bir müştəri
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
-    // Many-to-Many: müraciət çox tag-a, tag çox müraciətə aid ola bilər
     @ManyToMany
     @JoinTable(
             name = "service_request_tags",

@@ -1,6 +1,5 @@
 package com.example.customerservice.domain;
 
-/** Müraciətin həyat dövrü: OPEN -> IN_PROGRESS -> RESOLVED -> CLOSED */
 public enum RequestStatus {
     OPEN, IN_PROGRESS, RESOLVED, CLOSED;
 

@@ -7,7 +7,6 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import java.util.concurrent.Executor;
 
-/** Asinxron işlər (məs. bildiriş göndərmə) üçün ayrıca thread pool. */
 @Configuration
 @EnableAsync
 public class AsyncConfig {
