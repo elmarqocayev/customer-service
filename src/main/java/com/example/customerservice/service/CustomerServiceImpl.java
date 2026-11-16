@@ -54,7 +54,7 @@ public class CustomerServiceImpl implements CustomerService {
             throw new DuplicateResourceException("Bu email artıq mövcuddur: " + request.email());
         }
         apply(customer, request);
-        return CustomerResponse.from(customer); // dirty checking özü save edir
+        return CustomerResponse.from(customer);
     }
 
     @Override

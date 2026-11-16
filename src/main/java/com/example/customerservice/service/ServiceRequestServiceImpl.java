@@ -33,7 +33,6 @@ public class ServiceRequestServiceImpl implements ServiceRequestService {
     private final TagRepository tagRepository;
     private final ApplicationEventPublisher eventPublisher;
 
-    /** Addım 1: müraciət yaradılır (status = OPEN). Müraciət və tag-lar eyni transaction-da saxlanır. */
     @Override
     @Transactional
     public ServiceRequestResponse create(ServiceRequestCreate dto) {
@@ -67,7 +66,6 @@ public class ServiceRequestServiceImpl implements ServiceRequestService {
         return page.map(ServiceRequestResponse::from);
     }
 
-    /** Addım 2..N: status dəyişir. Qayda pozulsa exception atılır və transaction geri qaytarılır (rollback). */
     @Override
     @Transactional
     public ServiceRequestResponse changeStatus(Long id, RequestStatus newStatus) {
@@ -80,7 +78,6 @@ public class ServiceRequestServiceImpl implements ServiceRequestService {
         }
         request.setStatus(newStatus);
 
-        // Hadisə yalnız COMMIT-dən sonra dinlənilir (bax: NotificationListener)
         eventPublisher.publishEvent(new ServiceRequestStatusChangedEvent(
                 request.getId(), request.getCustomer().getEmail(), old, newStatus));
         return ServiceRequestResponse.from(request);
